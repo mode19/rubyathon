@@ -1,21 +1,29 @@
 When("Program load data file") do
-  pending # Write code here that turns the phrase above into concrete actions
+    @file_contents = File.read('README.md')
 end
 
 Then("Conent of file is available in memory") do
-  pending # Write code here that turns the phrase above into concrete actions
+    expect(@file_contents).to include "Rubyathon"
 end
 
 When("Program saves a file") do
-  pending # Write code here that turns the phrase above into concrete actions
+    File.write "/tmp/writesomefile", "THISFILEISRAD"
 end
 
 Then("the file exists on permament storage") do
-  pending # Write code here that turns the phrase above into concrete actions
+    newFileContent = File.read( "/tmp/writesomefile")
+    expect(newFileContent).to include "FILEISRAD"
+end
+
+When("Program deleles a file") do
+    File.delete '/tmp/writesomefile'
+    expect(File.exists?("/tmp/writesomefile")).to be(false)
+end
+
+Then("the file no longer exists") do
 end
 
 Given("A connection is established to another computer") do
-  pending # Write code here that turns the phrase above into concrete actions
 end
 
 When("The program sends a request") do
