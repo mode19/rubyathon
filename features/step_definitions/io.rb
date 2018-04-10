@@ -1,3 +1,5 @@
+require 'net/http'
+
 When("Program load data file") do
     @file_contents = File.read('README.md')
 end
@@ -17,20 +19,20 @@ end
 
 When("Program deleles a file") do
     File.delete '/tmp/writesomefile'
-    expect(File.exists?("/tmp/writesomefile")).to be(false)
 end
 
 Then("the file no longer exists") do
+    expect(File.exists?("/tmp/writesomefile")).to be(false)
 end
 
 Given("A connection is established to another computer") do
+    @googleResponse = Net::HTTP.get('google.com', '/') # => String
 end
 
 When("The program sends a request") do
-  pending # Write code here that turns the phrase above into concrete actions
 end
 
 Then("a response is received") do
-  pending # Write code here that turns the phrase above into concrete actions
+    expect(@googleResponse).to include "<HTML"
 end
 
