@@ -12,4 +12,9 @@ Program should be able to manipulate strings
         When the user splits it
         Then an array is created with an entry for each substring between the commas
 
+    Scenario: User wants to break a string into tokens
+        Given A string of tokens
+        When it is parsed
+        Then an array of tokens is returned
+
         
